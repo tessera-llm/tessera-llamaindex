@@ -1,0 +1,81 @@
+name: Bug report
+description: Something broke. Help us reproduce it.
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. The faster we can reproduce, the faster we ship a fix.
+
+        For security vulnerabilities, please use [SECURITY.md](../../SECURITY.md) instead — do not file a public issue.
+
+  - type: dropdown
+    id: sdk
+    attributes:
+      label: SDK
+      description: Which package?
+      options:
+        - Python (`tessera-llm-proxy`)
+        - Node / TypeScript (`@tessera-llm/tessera-sdk`)
+        - Both
+    validations:
+      required: true
+
+  - type: input
+    id: sdk-version
+    attributes:
+      label: SDK version
+      description: Output of `pip show tessera-llm-proxy` or `npm list @tessera-llm/tessera-sdk`.
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true
+
+  - type: input
+    id: runtime
+    attributes:
+      label: Language runtime version
+      description: Python or Node version.
+      placeholder: e.g. Python 3.11.7 / Node 22.5.1
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimum reproduction
+      description: Smallest snippet that reproduces the bug. Include any required environment variables (mask secrets).
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: Include stack traces, HTTP status codes, response bodies if relevant.
+    validations:
+      required: true
+
+  - type: input
+    id: client-id
+    attributes:
+      label: client_id (only if bug touches measurement / billing)
+      description: Visible at `/portal/billing` in the dashboard. Helps us trace the request in proxy logs.
+      placeholder: optional
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmations
+      options:
+        - label: I searched existing issues before filing this one.
+          required: true
+        - label: I removed any secrets (API keys, tokens) from the reproduction snippet.
+          required: true

@@ -1,0 +1,57 @@
+name: Feature request
+description: Suggest a new capability for the SDK.
+labels: ["feature", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We keep the SDK surface small on purpose — most logic lives in the proxy. Before filing, check that the feature belongs in the SDK and not in the proxy itself (anything that touches measurement, routing, or pricing belongs on the proxy side).
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options:
+        - Python (`tessera-llm-proxy`)
+        - Node / TypeScript (`@tessera-llm/tessera-sdk`)
+        - Both
+        - Examples folder
+        - Documentation
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem you are trying to solve
+      description: Describe the workflow that is currently awkward or impossible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would the API or example look like? Sketch a code snippet if it helps.
+      render: shell
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you tried, other libraries that handle this differently.
+
+  - type: input
+    id: provider
+    attributes:
+      label: Affected provider(s)
+      description: If specific to one upstream provider, list it here.
+      placeholder: e.g. OpenAI, Anthropic, all
+
+  - type: checkboxes
+    id: scope-check
+    attributes:
+      label: Scope check
+      options:
+        - label: I have read [CONTRIBUTING.md](../../CONTRIBUTING.md) and this request fits the SDK scope (not a proxy-side change).
+          required: true
