@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9', '3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package + test deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[test]"
+      - name: Install LlamaIndex providers for e2e tests
+        # E2E tests skip if these aren't installed; install them so the regression
+        # guards on constructor shapes actually run.
+        run: |
+          pip install llama-index-llms-openai llama-index-llms-anthropic llama-index-llms-mistralai llama-index-llms-groq llama-index-llms-cohere
+      - name: Run tests
+        run: pytest -v
