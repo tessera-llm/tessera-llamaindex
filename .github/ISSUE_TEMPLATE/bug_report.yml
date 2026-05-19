@@ -9,33 +9,30 @@ body:
 
         For security vulnerabilities, please use [SECURITY.md](../../SECURITY.md) instead — do not file a public issue.
 
-  - type: dropdown
-    id: sdk
+  - type: input
+    id: sdk-version
     attributes:
-      label: SDK
-      description: Which package?
-      options:
-        - Python (`tessera-llm-proxy`)
-        - Node / TypeScript (`@tessera-llm/tessera-sdk`)
-        - Both
+      label: Package version
+      description: Output of `pip show tessera-llamaindex`.
+      placeholder: e.g. 0.1.0
     validations:
       required: true
 
   - type: input
-    id: sdk-version
+    id: llamaindex-version
     attributes:
-      label: SDK version
-      description: Output of `pip show tessera-llm-proxy` or `npm list @tessera-llm/tessera-sdk`.
-      placeholder: e.g. 0.1.0
+      label: LlamaIndex version
+      description: Output of `pip show llama-index llama-index-llms-openai` etc.
+      placeholder: e.g. llama-index 0.13.0
     validations:
       required: true
 
   - type: input
     id: runtime
     attributes:
-      label: Language runtime version
-      description: Python or Node version.
-      placeholder: e.g. Python 3.11.7 / Node 22.5.1
+      label: Python version
+      description: Output of `python --version`.
+      placeholder: e.g. Python 3.11.7
     validations:
       required: true
 
