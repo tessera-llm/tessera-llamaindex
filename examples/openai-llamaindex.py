@@ -20,11 +20,11 @@ from tessera_llamaindex import tessera_openai_config
 
 
 def main() -> None:
-    openai_key = os.environ["OPENAI_API_KEY"]
-    tessera_key = os.environ["TESSERA_API_KEY"]
+    openai_key = os.environ['OPENAI_API_KEY']
+    tessera_key = os.environ['TESSERA_API_KEY']
 
     llm = OpenAI(
-        model="gpt-4o",
+        model='gpt-4o',
         api_key=openai_key,
         **tessera_openai_config(api_key=tessera_key),
     )
@@ -32,17 +32,17 @@ def main() -> None:
     response = llm.chat(
         [
             ChatMessage(
-                role="system",
+                role='system',
                 content=(
-                    "You are a senior platform engineer reviewing infrastructure "
-                    "decisions. Answer in 3 concise bullets."
+                    'You are a senior platform engineer reviewing infrastructure '
+                    'decisions. Answer in 3 concise bullets.'
                 ),
             ),
             ChatMessage(
-                role="user",
+                role='user',
                 content=(
-                    "Compare a service mesh sidecar approach vs an eBPF-based "
-                    "approach for east-west traffic policy enforcement."
+                    'Compare a service mesh sidecar approach vs an eBPF-based '
+                    'approach for east-west traffic policy enforcement.'
                 ),
             ),
         ]
@@ -51,5 +51,5 @@ def main() -> None:
     print(response)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

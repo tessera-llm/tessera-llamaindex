@@ -20,23 +20,26 @@ from tessera_llamaindex import tessera_cohere_config
 
 
 def main() -> None:
-    cohere_key = os.environ["COHERE_API_KEY"]
-    tessera_key = os.environ["TESSERA_API_KEY"]
+    cohere_key = os.environ['COHERE_API_KEY']
+    tessera_key = os.environ['TESSERA_API_KEY']
 
     llm = Cohere(
-        model="command-r-plus-08-2024",
+        model='command-r-plus-08-2024',
         api_key=cohere_key,
         **tessera_cohere_config(api_key=tessera_key),
     )
 
     response = llm.chat(
         [
-            ChatMessage(role="user", content="Compare Cohere's Rerank model to a dense vector retriever for production RAG. 3 concise bullets."),
+            ChatMessage(
+                role='user',
+                content="Compare Cohere's Rerank model to a dense vector retriever for production RAG. 3 concise bullets.",
+            ),
         ]
     )
 
     print(response)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

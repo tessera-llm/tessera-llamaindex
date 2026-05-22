@@ -20,23 +20,26 @@ from tessera_llamaindex import tessera_groq_config
 
 
 def main() -> None:
-    groq_key = os.environ["GROQ_API_KEY"]
-    tessera_key = os.environ["TESSERA_API_KEY"]
+    groq_key = os.environ['GROQ_API_KEY']
+    tessera_key = os.environ['TESSERA_API_KEY']
 
     llm = Groq(
-        model="llama-3.3-70b-versatile",
+        model='llama-3.3-70b-versatile',
         api_key=groq_key,
         **tessera_groq_config(api_key=tessera_key),
     )
 
     response = llm.chat(
         [
-            ChatMessage(role="user", content="How does Groq's LPU architecture differ from a GPU for inference workloads? 3 concise bullets."),
+            ChatMessage(
+                role='user',
+                content="How does Groq's LPU architecture differ from a GPU for inference workloads? 3 concise bullets.",
+            ),
         ]
     )
 
     print(response)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -1,3 +1,5 @@
+# ruff: noqa: RUF002
+# (U+00D7 MULTIPLICATION SIGN in docstrings is intentional branding glyph, not letter x.)
 """Tessera × LlamaIndex integration — drop-in cost optimization for any LlamaIndex LLM.
 
 Usage (most common):
@@ -18,24 +20,24 @@ See https://tesseraai.io/dev for the dashboard, free tier, and full
 mechanic documentation.
 """
 
-from tessera_llamaindex._version import __version__
 from tessera_llamaindex._config import (
     TESSERA_BASE_URL,
-    tessera_openai_config,
     tessera_anthropic_config,
-    tessera_mistral_config,
-    tessera_groq_config,
     tessera_cohere_config,
     tessera_config,
+    tessera_groq_config,
+    tessera_mistral_config,
+    tessera_openai_config,
 )
+from tessera_llamaindex._version import __version__
 
 __all__ = [
-    "__version__",
-    "TESSERA_BASE_URL",
-    "tessera_openai_config",
-    "tessera_anthropic_config",
-    "tessera_mistral_config",
-    "tessera_groq_config",
-    "tessera_cohere_config",
-    "tessera_config",
+    'TESSERA_BASE_URL',
+    '__version__',
+    'tessera_anthropic_config',
+    'tessera_cohere_config',
+    'tessera_config',
+    'tessera_groq_config',
+    'tessera_mistral_config',
+    'tessera_openai_config',
 ]

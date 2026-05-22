@@ -18,14 +18,15 @@ users who never install LlamaIndex itself).
 from __future__ import annotations
 
 import importlib
+
 import pytest
 
 from tessera_llamaindex import (
-    tessera_openai_config,
     tessera_anthropic_config,
-    tessera_mistral_config,
-    tessera_groq_config,
     tessera_cohere_config,
+    tessera_groq_config,
+    tessera_mistral_config,
+    tessera_openai_config,
 )
 
 
@@ -47,53 +48,61 @@ def _has(module_name: str) -> bool:
 # providers and pins our config-shape correctness in CI.
 
 
-@pytest.mark.skipif(not _has("llama_index.llms.openai"), reason="llama-index-llms-openai not installed")
+@pytest.mark.skipif(
+    not _has('llama_index.llms.openai'), reason='llama-index-llms-openai not installed'
+)
 def test_openai_constructor_accepts_config():
     from llama_index.llms.openai import OpenAI
 
     # Should not raise.
-    OpenAI(model="gpt-4o", api_key="sk-fake", **tessera_openai_config(api_key="tsr_test"))
+    OpenAI(model='gpt-4o', api_key='sk-fake', **tessera_openai_config(api_key='tsr_test'))
 
 
-@pytest.mark.skipif(not _has("llama_index.llms.anthropic"), reason="llama-index-llms-anthropic not installed")
+@pytest.mark.skipif(
+    not _has('llama_index.llms.anthropic'), reason='llama-index-llms-anthropic not installed'
+)
 def test_anthropic_constructor_accepts_config():
     from llama_index.llms.anthropic import Anthropic
 
     Anthropic(
-        model="claude-sonnet-4-5-20250929",
-        api_key="sk-ant-fake",
-        **tessera_anthropic_config(api_key="tsr_test"),
+        model='claude-sonnet-4-5-20250929',
+        api_key='sk-ant-fake',
+        **tessera_anthropic_config(api_key='tsr_test'),
     )
 
 
-@pytest.mark.skipif(not _has("llama_index.llms.mistralai"), reason="llama-index-llms-mistralai not installed")
+@pytest.mark.skipif(
+    not _has('llama_index.llms.mistralai'), reason='llama-index-llms-mistralai not installed'
+)
 def test_mistral_constructor_accepts_config():
     from llama_index.llms.mistralai import MistralAI
 
     MistralAI(
-        model="mistral-large-latest",
-        api_key="fake",
-        **tessera_mistral_config(api_key="tsr_test"),
+        model='mistral-large-latest',
+        api_key='fake',
+        **tessera_mistral_config(api_key='tsr_test'),
     )
 
 
-@pytest.mark.skipif(not _has("llama_index.llms.groq"), reason="llama-index-llms-groq not installed")
+@pytest.mark.skipif(not _has('llama_index.llms.groq'), reason='llama-index-llms-groq not installed')
 def test_groq_constructor_accepts_config():
     from llama_index.llms.groq import Groq
 
     Groq(
-        model="llama-3.3-70b-versatile",
-        api_key="gsk-fake",
-        **tessera_groq_config(api_key="tsr_test"),
+        model='llama-3.3-70b-versatile',
+        api_key='gsk-fake',
+        **tessera_groq_config(api_key='tsr_test'),
     )
 
 
-@pytest.mark.skipif(not _has("llama_index.llms.cohere"), reason="llama-index-llms-cohere not installed")
+@pytest.mark.skipif(
+    not _has('llama_index.llms.cohere'), reason='llama-index-llms-cohere not installed'
+)
 def test_cohere_constructor_accepts_config():
     from llama_index.llms.cohere import Cohere
 
     Cohere(
-        model="command-r-plus",
-        api_key="fake",
-        **tessera_cohere_config(api_key="tsr_test"),
+        model='command-r-plus',
+        api_key='fake',
+        **tessera_cohere_config(api_key='tsr_test'),
     )

@@ -1,0 +1,64 @@
+# Ruff config — workspace-level defaults for all Python sub-packages
+# (tessera-crewai, tessera-pydantic-ai, tessera-langchain/python,
+# tessera-llamaindex/python). Each package's pyproject.toml can override.
+#
+# Installed 2026-05-22 per founder lock. Replaces flake8 + black + isort +
+# pyupgrade + pylint with a single Rust binary 100x faster than flake8.
+
+line-length = 100
+target-version = "py310"
+
+extend-exclude = [
+  ".venv",
+  "venv",
+  "build",
+  "dist",
+  "*.egg-info",
+  "__pycache__",
+  ".tox",
+  ".pytest_cache",
+  ".ruff_cache",
+  "node_modules",
+  ".claude/skills",
+]
+
+[lint]
+# Curated rule set: pycodestyle (E/W), pyflakes (F), pep8-naming (N),
+# bugbear (B), pyupgrade (UP), comprehensions (C4), simplify (SIM),
+# imports (I), security (S — bandit). Excludes tests from security
+# rules since test fixtures legitimately use insecure patterns.
+select = [
+  "E", "W", "F", "N", "B", "UP", "C4", "SIM", "I", "S",
+  "RUF",  # Ruff-specific
+  "PL",   # Pylint subset
+]
+ignore = [
+  "E501",   # line-too-long — covered by formatter
+  "S101",   # assert usage — pytest needs it
+  "PLR0913", # too many arguments — common in API client constructors
+]
+
+[lint.per-file-ignores]
+# Tests guard optional-peer-dep imports behind @pytest.mark.skipif(_has(...)),
+# so the deferred-import-inside-function pattern (PLC0415) is the established
+# convention — keeping tests collectible when the framework isn't installed.
+"**/tests/**/*.py" = ["S", "PLR2004", "PLC0415"]
+"**/test_*.py" = ["S", "PLR2004", "PLC0415"]
+"**/*_test.py" = ["S", "PLR2004", "PLC0415"]
+"**/examples/**/*.py" = ["S", "T201"]  # print() OK in examples
+
+# Factory modules (`_config.py`, `_wrap.py`) deferred-import their framework
+# SDKs (crewai, langchain, pydantic_ai, llama_index.*, etc.) inside helper
+# functions so the package stays importable without every peer dep installed.
+# PLC0415 (import-should-be-top-level) is intentional here.
+"**/_config.py" = ["PLC0415"]
+"**/_wrap.py" = ["PLC0415"]
+
+[lint.isort]
+known-first-party = ["tessera_crewai", "tessera_pydantic_ai", "tessera_langchain", "tessera_llamaindex"]
+combine-as-imports = true
+
+[format]
+quote-style = "single"
+indent-style = "space"
+line-ending = "lf"
