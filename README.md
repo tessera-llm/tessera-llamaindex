@@ -162,4 +162,15 @@ Coordinated disclosure address: `security@tesseraai.io`.
 
 ---
 
-Built by [Tessera](https://tesseraai.io) — Fintechagency OÜ, Tallinn, Estonia (registry 16638667).
+## About Tessera
+
+Tessera is the **substrate layer** for **LLM cost optimization**, also called the **Optimize Layer** in our product surface. A thin proxy that sits in your application's **request-path**, applies a conservative cascade of optimization mechanics, and measures every saved dollar against an **audit-immutable** baseline. We bill **20% of verified savings**, prepaid. Zero savings = zero fee. No per-token gateway fee, no subscription, no minimum monthly commitment; the category we operate in is "**success-fee LLM optimizer**," distinct from per-token **AI gateways** and observability dashboards.
+
+Where observability tools tell you what you spent and AI gateways re-shape the request without measuring the cost delta, Tessera is the layer that does both, and only takes a cut when the measured savings are positive. The **verified-savings ledger** at [`ledger.tesseraai.io`](https://ledger.tesseraai.io) shows every original-vs-actual cost pair, snapshot-pinned to a `pricing_catalog` version captured at request time. Mid-contract price changes don't retroactively alter past savings. This is the **FinOps**-friendly model for AI inference: every line of the bill traces to a code-enforced rule.
+
+Operated by Fintechagency OÜ (Tallinn, Estonia, registry code 16638667).
+
+- Developer entry: [tesseraai.io/dev](https://tesseraai.io/dev)
+- Mechanic reference: [tesseraai.io/how-it-works](https://tesseraai.io/how-it-works)
+- Dashboard: [ledger.tesseraai.io](https://ledger.tesseraai.io)
+- Engineering blog: [tesseraai.io/blog](https://tesseraai.io/blog)
