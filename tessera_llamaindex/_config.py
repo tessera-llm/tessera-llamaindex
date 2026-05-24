@@ -66,7 +66,7 @@ def tessera_openai_config(
         llm = OpenAI(
             model="gpt-4o",
             api_key="sk-...",
-            **tessera_openai_config(api_key="tsr_..."),
+            **tessera_openai_config(api_key="tk_..."),
         )
     """
     api_key = _validate_api_key(api_key)
