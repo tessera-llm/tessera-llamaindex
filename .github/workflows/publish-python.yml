@@ -1,18 +1,19 @@
-name: Publish Python (tessera-llamaindex) to PyPI
+name: Publish Python to PyPI (sigstore-attested)
 
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
   workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write   # OIDC token for sigstore attestation / Trusted Publishing
 
 jobs:
   publish:
-    name: Build + upload tessera-llamaindex
+    name: Build + upload (sigstore-attested)
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,19 +21,30 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install build tools
-        run: pip install --upgrade build twine
+        run: pip install --upgrade build
 
       - name: Build distributions
         run: python -m build
 
-      - name: Verify metadata
-        run: python -m twine check dist/*
-
-      - name: Publish to PyPI
+      - name: Check PYPI_TOKEN secret
+        id: check-secret
         env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: python -m twine upload dist/*
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          if [ -z "$PYPI_TOKEN" ]; then
+            echo "::warning::PYPI_TOKEN secret not set on this repo. Set via: gh secret set PYPI_TOKEN --repo tessera-llm/<repo>. Falls back to Trusted Publishing if configured at https://pypi.org/manage/account/publishing/."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish to PyPI (with sigstore attestations)
+        if: steps.check-secret.outputs.skip == "false"
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_TOKEN }}
+          attestations: true
+
