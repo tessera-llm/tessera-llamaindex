@@ -1,10 +1,10 @@
-[build-system]
+﻿[build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
 name = "tessera-llamaindex"
-version = "0.1.0"
+version = "0.1.1"
 description = "Drop-in Tessera integration for LlamaIndex. One line of config routes your existing OpenAI / Anthropic / Mistral / Groq / Cohere LLM through Tessera's auto-route + auto-cache + auto-compress + auto-batch proxy. Free tier: 60M tokens/mo. Production: 20% of measured savings."
 readme = "README.md"
 requires-python = ">=3.9"
