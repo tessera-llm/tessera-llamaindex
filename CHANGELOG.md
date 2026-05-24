@@ -36,7 +36,7 @@ Field names locked in via `tests/test_e2e.py`:
 
 ### Architecture notes
 
-- Same proxy as `tessera-sdk` / `tessera-langchain` / `tessera-vercel-ai`. Same `tsr_…` API key works across all four; same billing record. Safe to install side by side.
+- Same proxy as `tessera-sdk` / `tessera-langchain` / `tessera-vercel-ai`. Same `tk_…` API key works across all four; same billing record. Safe to install side by side.
 - Open-source thin client × closed-source proxy at `api.tesseraai.io`.
 - No `llama-index-*` dependencies in the package itself. Config functions return plain dicts that LlamaIndex LLM classes accept via their public init signatures.
 

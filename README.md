@@ -31,7 +31,7 @@ from tessera_llamaindex import tessera_openai_config
 llm = OpenAI(
     model="gpt-4o",
     api_key="sk-...",                              # your OpenAI key, unchanged
-    **tessera_openai_config(api_key="tsr_..."),    # one line, routes through Tessera
+    **tessera_openai_config(api_key="tk_..."),    # one line, routes through Tessera
 )
 
 # Existing LlamaIndex code (queries, RAG pipelines, agents, sub-question
@@ -48,7 +48,7 @@ from tessera_llamaindex import tessera_anthropic_config
 llm = Anthropic(
     model="claude-sonnet-4-5-20250929",
     api_key="sk-ant-...",
-    **tessera_anthropic_config(api_key="tsr_..."),
+    **tessera_anthropic_config(api_key="tk_..."),
 )
 ```
 
@@ -94,7 +94,7 @@ Same mechanic stack as the main [`tessera-sdk`](https://github.com/tessera-llm/t
 - **Free Dev** — 60M tokens/month, 30 requests/minute, all mechanics on, no card. Forever.
 - **Production** — over 60M tokens/month or higher rate limit. **20% of measured savings only.** Zero savings, zero fee. Prepaid Stripe balance, $100 minimum top-up.
 
-Existing customers of the other Tessera packages keep their `rate_locked_pct` (if any) on this package — same `tsr_…` key, same billing record.
+Existing customers of the other Tessera packages keep their `rate_locked_pct` (if any) on this package — same `tk_…` key, same billing record.
 
 ---
 
@@ -139,7 +139,7 @@ from llama_index.core import Settings
 from llama_index.llms.openai import OpenAI
 from tessera_llamaindex import tessera_openai_config
 
-Settings.llm = OpenAI(model="gpt-4o", api_key="sk-...", **tessera_openai_config(api_key="tsr_..."))
+Settings.llm = OpenAI(model="gpt-4o", api_key="sk-...", **tessera_openai_config(api_key="tk_..."))
 ```
 
 ---

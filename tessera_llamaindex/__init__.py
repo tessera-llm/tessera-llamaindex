@@ -8,7 +8,7 @@ Usage (most common):
     llm = OpenAI(
         model="gpt-4o",
         api_key="sk-...",
-        **tessera_openai_config(api_key="tsr_..."),
+        **tessera_openai_config(api_key="tk_..."),
     )
 
     # Existing LlamaIndex code runs unchanged — queries, RAG pipelines,

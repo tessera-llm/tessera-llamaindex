@@ -52,7 +52,7 @@ def test_openai_constructor_accepts_config():
     from llama_index.llms.openai import OpenAI
 
     # Should not raise.
-    OpenAI(model="gpt-4o", api_key="sk-fake", **tessera_openai_config(api_key="tsr_test"))
+    OpenAI(model="gpt-4o", api_key="sk-fake", **tessera_openai_config(api_key="tk_test"))
 
 
 @pytest.mark.skipif(not _has("llama_index.llms.anthropic"), reason="llama-index-llms-anthropic not installed")
@@ -62,7 +62,7 @@ def test_anthropic_constructor_accepts_config():
     Anthropic(
         model="claude-sonnet-4-5-20250929",
         api_key="sk-ant-fake",
-        **tessera_anthropic_config(api_key="tsr_test"),
+        **tessera_anthropic_config(api_key="tk_test"),
     )
 
 
@@ -73,7 +73,7 @@ def test_mistral_constructor_accepts_config():
     MistralAI(
         model="mistral-large-latest",
         api_key="fake",
-        **tessera_mistral_config(api_key="tsr_test"),
+        **tessera_mistral_config(api_key="tk_test"),
     )
 
 
@@ -84,7 +84,7 @@ def test_groq_constructor_accepts_config():
     Groq(
         model="llama-3.3-70b-versatile",
         api_key="gsk-fake",
-        **tessera_groq_config(api_key="tsr_test"),
+        **tessera_groq_config(api_key="tk_test"),
     )
 
 
@@ -95,5 +95,5 @@ def test_cohere_constructor_accepts_config():
     Cohere(
         model="command-r-plus",
         api_key="fake",
-        **tessera_cohere_config(api_key="tsr_test"),
+        **tessera_cohere_config(api_key="tk_test"),
     )
