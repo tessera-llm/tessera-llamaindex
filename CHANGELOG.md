@@ -1,9 +1,17 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to `tessera-llamaindex` documented here. Follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.1] -- 2026-05-25
+
+### Fixed
+- Free Sandbox terminology consistency.
+- Blog cross-link slug 38 -> 48.
+
+### Changed
+- Companion-cross-link block refreshed for 4 new sibling repos.
 ### Changed
 
 - README cross-link block extended to include `tessera-mastra` (Mastra Agent
