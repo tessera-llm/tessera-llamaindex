@@ -1,0 +1,16 @@
+﻿cff-version: 1.2.0
+title: tessera-llamaindex
+message: "If you reference Tessera in academic or industry research, please cite this software."
+type: software
+authors:
+  - given-names: Yevheny
+    family-names: Panin
+    affiliation: Fintechagency OГњ
+repository-code: "https://github.com/tessera-llm/tessera-llamaindex"
+url: "https://tesseraai.io"
+license: Apache-2.0
+keywords:
+  - llm
+  - cost-optimization
+  - llm-proxy
+  - quality-canary
