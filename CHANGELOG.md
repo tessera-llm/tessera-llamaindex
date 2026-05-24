@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to `tessera-llamaindex` documented here. Follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
