@@ -1,6 +1,6 @@
 # `tessera-llamaindex`
 
-**Drop-in cost optimization for LlamaIndex.** One line of config routes your existing `OpenAI` / `Anthropic` / `MistralAI` / `Groq` / `Cohere` LLM through the [Tessera](https://tesseraai.io) optimization proxy — auto-route to cheaper-equivalent models, exact + provider-prompt-cache hits, prompt compression with per-stack quality canary, batch arbitrage on async-tolerant calls. Free Dev tier: **60M tokens/month, no card**. Production: **20% of measured savings, $0 if we save you nothing**.
+**Drop-in cost optimization for LlamaIndex.** One line of config routes your existing `OpenAI` / `Anthropic` / `MistralAI` / `Groq` / `Cohere` LLM through the [Tessera](https://tesseraai.io) optimization proxy — auto-route to cheaper-equivalent models, exact + provider-prompt-cache hits, prompt compression with per-stack quality canary, batch arbitrage on async-tolerant calls. Free Sandbox tier: **60M tokens/month, no card**. Production: **20% of measured savings, $0 if we save you nothing**.
 
 <!-- COMPANION-PACKAGES-START -->
 Companion to [`tessera-sdk`](https://github.com/tessera-llm/tessera-sdk) (vanilla provider SDKs), [`tessera-langchain`](https://github.com/tessera-llm/tessera-langchain) (LangChain integration), [`tessera-vercel-ai`](https://github.com/tessera-llm/tessera-vercel-ai) (Vercel AI SDK integration), [`tessera-mastra`](https://www.npmjs.com/package/@tessera-llm/mastra) (Mastra Agent framework integration), [`tessera-pydantic-ai`](https://pypi.org/project/tessera-pydantic-ai/) (Pydantic AI integration), [`tessera-crewai`](https://pypi.org/project/tessera-crewai/) (CrewAI multi-agent integration), and [`tessera-autogen`](https://pypi.org/project/tessera-autogen/) (AutoGen 0.4+ multi-agent integration). Same proxy, same mechanic stack, LlamaIndex-shaped API.
@@ -91,7 +91,7 @@ Same mechanic stack as the main [`tessera-sdk`](https://github.com/tessera-llm/t
 
 ## Pricing
 
-- **Free Dev** — 60M tokens/month, 30 requests/minute, all mechanics on, no card. Forever.
+- **Free Sandbox** — 60M tokens/month, 30 requests/minute, observability-only mechanics, no card. Forever.
 - **Production** — over 60M tokens/month or higher rate limit. **20% of measured savings only.** Zero savings, zero fee. Prepaid Stripe balance, $100 minimum top-up.
 
 Existing customers of the other Tessera packages keep their `rate_locked_pct` (if any) on this package — same `tk_…` key, same billing record.
@@ -121,7 +121,7 @@ Your application gets HTTP errors instead of LLM responses. On the proxy side, a
 
 ### Q: What happens to my OpenAI / Anthropic rate limits?
 
-They pass through. Tessera does not aggregate quotas across customers. Your provider rate limits apply normally; the proxy enforces only the Tessera tier limits (30 rpm Free Dev, 60 rpm Production by default — higher on request).
+They pass through. Tessera does not aggregate quotas across customers. Your provider rate limits apply normally; the proxy enforces only the Tessera tier limits (30 rpm Free Sandbox, 60 rpm Production by default — higher on request).
 
 ### Q: Are you storing my prompts and completions?
 
