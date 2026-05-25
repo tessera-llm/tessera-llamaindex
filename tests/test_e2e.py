@@ -1,7 +1,7 @@
 """E2E shape compatibility tests against the real LlamaIndex provider
 constructors. Gated by the `llama-index-llms-*` packages being installed.
 
-Locked 2026-05-19 after a self-review caught that 3 of 5 provider configs
+Test coverage extended 2026-05-19 to cover that 3 of 5 provider configs
 had unverified constructor-signature claims. The unverified Mistral one
 turned out to be wrong (default_headers vs additional_kwargs.http_headers)
 and was fixed before this test was committed.
