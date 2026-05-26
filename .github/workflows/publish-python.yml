@@ -42,7 +42,7 @@ jobs:
           fi
 
       - name: Publish to PyPI (with sigstore attestations)
-        if: steps.check-secret.outputs.skip == "false"
+        if: steps.check-secret.outputs.skip == 'false'
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_TOKEN }}
