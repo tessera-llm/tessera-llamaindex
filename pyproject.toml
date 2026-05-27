@@ -7,7 +7,7 @@ name = "tessera-llamaindex"
 version = "0.1.1"
 description = "Drop-in Tessera integration for LlamaIndex. One line of config routes your existing OpenAI / Anthropic / Mistral / Groq / Cohere LLM through Tessera's auto-route + auto-cache + auto-compress + auto-batch proxy. Free tier: 60M tokens/mo. Production: 20% of measured savings."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = { text = "Apache-2.0" }
 authors = [
   { name = "Tessera (Fintechagency OÜ)", email = "contact@tesseraai.io" }
@@ -38,7 +38,6 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",

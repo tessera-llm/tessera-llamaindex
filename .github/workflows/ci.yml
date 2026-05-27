@@ -16,7 +16,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.9', '3.10', '3.11', '3.12']
+        # Python 3.9 dropped 2026-05-27 (launch-eve audit P0-13): llama-index
+        # upstream uses PEP-604 `LLM | None` union syntax in
+        # `llama_index.core.indices.prompt_helper.ChatPromptHelper`, which
+        # only parses on Python 3.10+. Tessera-llamaindex follows the same
+        # support floor as the package it integrates against.
+        python-version: ['3.10', '3.11', '3.12']
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
