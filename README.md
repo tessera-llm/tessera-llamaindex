@@ -91,7 +91,7 @@ Same mechanic stack as the main [`tessera-sdk`](https://github.com/tessera-llm/t
 
 ## Pricing
 
-- **Free Sandbox** — 60M tokens/month, 30 requests/minute, observability-only mechanics, no card. Forever.
+- **Free Sandbox** — 60M tokens/month, 30 requests/minute, full mechanic stack active (route · cache · compress · batch). No card. Forever.
 - **Paid tiers** — flat monthly subscription by token volume: Starter $199 (≤1B), Growth $999 (≤5B), Scale $3,999 (≤20B), Enterprise custom (20B+). You keep 100% of measured savings.
 
 Existing customers of the other Tessera packages keep their `rate_locked_pct` (if any) on this package — same `tk_…` key, same billing record.
