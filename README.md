@@ -10,6 +10,14 @@ Companion to [`tessera-sdk`](https://github.com/tessera-llm/tessera-sdk) (vanill
 
 ---
 
+## See it in action
+
+[![Tessera launch demo — 41-second walkthrough](https://tesseraai.io/launch-reel-poster.jpg)](https://tesseraai.io/launch-reel.mp4)
+
+▶ 41-second walkthrough: live counter ticks · baseline $74,800 → actual $30,000 ($44,800 saved, 60% reduction) · audit-immutable savings ledger. Click to play.
+
+---
+
 ## Install
 
 ```bash
